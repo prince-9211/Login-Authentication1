@@ -1,0 +1,44 @@
+body {
+    background-color: #ca69da;
+    margin: 10% 20%;
+    color: #ecb8a5;
+    font-family: Arial, "sans serif";
+  }
+  
+  h1 { 
+    padding-bottom: 5%;
+    font-size: 40px;
+    font-family: 'Fresca', sans-serif;
+  }
+  
+  header {
+    padding: 0;
+    margin: 0 15%;
+    color: #1f0abb;
+  }
+  .CheckBox {
+    padding: 10% ;
+    margin: 5%;
+    background-color: #592987;
+    text-align: center;
+    border-radius: 20px;
+  }
+  
+  input, 
+  button {
+    margin: 2%;
+  }
+  
+  #rules {
+    padding-top: 2%;
+    display: none;
+  }
+  
+  #rules ul li {
+    text-align: left;
+  }
+  
+  #error {
+    color: rgb(255, 0, 0);
+    display : none;
+  }

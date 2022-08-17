@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Sign IN</title>
+  <link rel="stylesheet" href="style.css" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Fresca&display=swap" rel="stylesheet">
+  <link href="style.js" rel="">
+
+</head>
+
+<body>
+  <!-- <header>
+    <p>Login with username and password </p>
+  </header> -->
+  <section class="CheckBox">
+    <h1>Authentication </h1>
+    <form action="#" method="post" name="authentication" id="authentication" class="authentication">
+      <label for="username">Enter your username :</label>
+      <br>
+      <input type="text" name="username" id="username" minlength="3" maxlenth="15">
+      <br>
+      <label for="password">Enter your password :</label>
+      <br>
+      <input type="password" name="password" id="password" minlength="8" maxlength="15">
+      <br>
+      <input id="sub" type="submit" value="Submit"></input>
+      <button id="rule" type="button">create account</button>
+      <!-- <button id="rule" type="button">Rules</button> -->
+    </form>
+    <div id="rules">
+      <ul>
+        <li>Username must have between 3 and 15 caracters</li>
+        <li>Password must have between 8 and 15 caracters</li>
+        <li>Username and Password required</li>
+        <li>Use only numbers and letters</li>
+      </ul>
+    </div>
+  </section>
+  
+  <script>
+    cookies = document.cookie.split("; ");
+    username = '';
+    password = '';
+    for (e of cookies) {
+      if (e.split("=")[0] == 'username') { username = e.split("=")[1] }
+      else if (e.split("=")[0] == 'password') { password = e.split("=")[1] }
+    }
+    console.log(username,password)
+    if (username != '' && password != '') {
+      window.location.href = '/index.html';
+    }
+    document.querySelector("#sub").addEventListener("click", function (e) {
+      e.preventDefault();
+      let username = document.querySelector("#username").value;
+      let password = document.querySelector("#password").value;
+
+
+      users = JSON.parse(localStorage.getItem('users'));
+      if (!users) {
+        alert('user with this username does not exist');
+
+      }
+      else {
+        f = 0
+        for (e of users) {
+          if (e.username == username) {
+            if (e.password == password) {
+              console.log('user logged in')
+              
+              document.cookie = `username=${username}`
+              document.cookie = `password=${password}`
+              window.location.href = '/index.html';
+            }
+            else {
+              console.log(e.password, password)
+              alert("incorrect password")
+            }
+            f = 1
+            break
+          }
+        }
+        if (f == 0) {
+          alert('user with this username does not exist')
+        }
+      }
+    })
+    document.querySelector("#rule").addEventListener('click',()=>{
+      window.location.href = '/signup.html';
+    })
+  </script>
+</body>
+
+</html>
